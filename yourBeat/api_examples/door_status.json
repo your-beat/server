@@ -1,0 +1,40 @@
+{
+  "components": {
+    "main": {
+      "contactSensor": {
+        "contact": {
+          "value": "closed",
+          "timestamp": "2023-11-16T06:43:19.614Z"
+        }
+      },
+      "refresh": {},
+      "battery": {
+        "battery": {
+          "value": 100,
+          "unit": "%",
+          "timestamp": "2023-11-16T06:35:38.760Z"
+        }
+      },
+      "firmwareUpdate": {
+        "lastUpdateStatusReason": {
+          "value": null
+        },
+        "availableVersion": {
+          "value": null
+        },
+        "lastUpdateStatus": {
+          "value": null
+        },
+        "state": {
+          "value": null
+        },
+        "currentVersion": {
+          "value": null
+        },
+        "lastUpdateTime": {
+          "value": null
+        }
+      }
+    }
+  }
+}

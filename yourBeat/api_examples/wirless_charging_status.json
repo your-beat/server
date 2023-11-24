@@ -1,0 +1,283 @@
+{
+  "components": {
+    "main": {
+      "samsungim.chargingStatus": {
+        "stoppedStatus": {
+          "value": "unknown",
+          "timestamp": "2023-11-16T06:06:47.251Z"
+        },
+        "chargingStatus": {
+          "value": "idle",
+          "timestamp": "2023-11-24T07:17:04.876Z"
+        }
+      },
+      "samsungim.wifi": {
+        "connectionInfo": {
+          "value": {
+            "ssid": "DGU-GUEST"
+          },
+          "timestamp": "2023-11-24T06:59:28.909Z"
+        },
+        "scanResults": {
+          "value": null
+        }
+      },
+      "custom.userNotification": {
+        "message": {
+          "value": null
+        }
+      },
+      "samsungim.samsungaccount": {
+        "signInStatus": {
+          "value": "signedIn",
+          "timestamp": "2023-11-16T06:06:45.990Z"
+        }
+      },
+      "samsungim.firmwareServer": {
+        "server": {
+          "value": "SERVICE",
+          "timestamp": "2023-11-16T06:06:48.775Z"
+        }
+      },
+      "samsungim.ringMobile": {
+        "held": {
+          "value": {
+            "enabled": false,
+            "hashedDeviceId": ""
+          },
+          "timestamp": "2023-11-16T06:06:46.553Z"
+        },
+        "double": {
+          "value": {
+            "enabled": false,
+            "hashedDeviceId": ""
+          },
+          "timestamp": "2023-11-16T06:06:46.553Z"
+        },
+        "ringMobile": {
+          "value": null
+        },
+        "pushed": {
+          "value": {
+            "enabled": false,
+            "hashedDeviceId": ""
+          },
+          "timestamp": "2023-11-16T06:06:46.553Z"
+        }
+      },
+      "firmwareUpdate": {
+        "lastUpdateStatusReason": {
+          "value": null
+        },
+        "availableVersion": {
+          "value": "P9500XXU1AWJ2",
+          "timestamp": "2023-11-16T06:06:48.648Z"
+        },
+        "lastUpdateStatus": {
+          "value": null
+        },
+        "state": {
+          "value": null
+        },
+        "currentVersion": {
+          "value": "P9500XXU1AWA1",
+          "timestamp": "2023-11-16T06:06:48.255Z"
+        },
+        "lastUpdateTime": {
+          "value": null
+        }
+      },
+      "samsungim.selfTest": {
+        "report": {
+          "value": null
+        }
+      },
+      "samsungim.chargerFirmware": {
+        "mcuDeviceFwVer": {
+          "value": "0x2b",
+          "timestamp": "2023-11-16T06:06:47.088Z"
+        },
+        "txicDeviceFwVer": {
+          "value": "0x11b",
+          "timestamp": "2023-11-16T06:06:47.088Z"
+        }
+      },
+      "button": {
+        "button": {
+          "value": "pushed",
+          "timestamp": "2023-11-16T06:12:24.206Z"
+        },
+        "numberOfButtons": {
+          "value": 1,
+          "timestamp": "2023-11-16T06:06:46.553Z"
+        },
+        "supportedButtonValues": {
+          "value": [
+            "pushed",
+            "held",
+            "double"
+          ],
+          "timestamp": "2023-11-16T06:06:46.553Z"
+        }
+      },
+      "samsungim.devicestatus": {
+        "status": {
+          "value": {
+            "btAddr": "2c:ba:ba:94:72:80",
+            "hwVer": "REV0.2",
+            "mnId": "0AFD",
+            "mnmo": "chargerhub",
+            "modelNumber": "EP-P9500TWEGKR",
+            "serialNumber": "RF7W103THCNYVS",
+            "setupId": "612",
+            "swVer": "P9500XXU1AWA1",
+            "wifiMAC": "2c:ba:ba:94:72:81"
+          },
+          "timestamp": "2023-11-16T06:06:46.553Z"
+        }
+      },
+      "samsungim.requestInvitation": {
+        "requestInvitation": {
+          "value": null
+        },
+        "held": {
+          "value": true,
+          "timestamp": "2023-11-16T06:06:46.553Z"
+        },
+        "double": {
+          "value": false,
+          "timestamp": "2023-11-16T06:06:46.553Z"
+        },
+        "pushed": {
+          "value": false,
+          "timestamp": "2023-11-16T06:06:46.553Z"
+        }
+      },
+      "logTrigger": {
+        "logState": {
+          "value": "idle",
+          "timestamp": "2023-11-24T07:00:58.271Z"
+        },
+        "logRequestState": {
+          "value": null
+        },
+        "logInfo": {
+          "value": null
+        }
+      },
+      "sec.diagnosticsInformation": {
+        "logType": {
+          "value": [
+            "errCode",
+            "dump"
+          ],
+          "timestamp": "2023-11-16T06:06:45.503Z"
+        },
+        "endpoint": {
+          "value": "PIPER",
+          "timestamp": "2023-11-16T06:06:45.503Z"
+        },
+        "minVersion": {
+          "value": "2.0",
+          "timestamp": "2023-11-16T06:06:45.503Z"
+        },
+        "signinPermission": {
+          "value": null
+        },
+        "setupId": {
+          "value": "612",
+          "timestamp": "2023-11-16T06:06:45.503Z"
+        },
+        "protocolType": {
+          "value": "ble_stdk",
+          "timestamp": "2023-11-16T06:06:45.503Z"
+        },
+        "tsId": {
+          "value": null
+        },
+        "mnId": {
+          "value": "0AFD",
+          "timestamp": "2023-11-16T06:06:45.503Z"
+        },
+        "dumpType": {
+          "value": "file",
+          "timestamp": "2023-11-16T06:06:45.503Z"
+        }
+      },
+      "samsungim.ledNotification": {
+        "ledNotification": {
+          "value": true,
+          "timestamp": "2023-11-16T06:06:55.795Z"
+        }
+      },
+      "samsungim.firmwareAutoUpdate": {
+        "autoUpdateEnabled": {
+          "value": null
+        }
+      }
+    },
+    "smartthings-hub": {
+      "samsungim.sthubeui": {
+        "hubEui": {
+          "value": "D052A8D0C7BB0001",
+          "timestamp": "2023-11-16T06:06:53.940Z"
+        },
+        "hubDeviceId": {
+          "value": "ae0f438f-3ccb-48bf-bb19-2d0c472b9032",
+          "timestamp": "2023-11-16T06:07:05.715Z"
+        },
+        "hubOnboardingStatus": {
+          "value": "OC02",
+          "timestamp": "2023-11-16T06:06:55.530Z"
+        }
+      },
+      "samsungim.hubOnboarding": {
+        "onboarding": {
+          "value": "onboarding",
+          "timestamp": "2023-11-16T06:06:53.940Z"
+        }
+      },
+      "switch": {
+        "switch": {
+          "value": "off",
+          "timestamp": "2023-11-16T06:06:46.151Z"
+        }
+      }
+    },
+    "smartthings-findNode": {
+      "samsungim.findNodeGeolocation": {
+        "method": {
+          "value": null
+        },
+        "heading": {
+          "value": null
+        },
+        "latitude": {
+          "value": null
+        },
+        "accuracy": {
+          "value": null
+        },
+        "speed": {
+          "value": null
+        },
+        "longitude": {
+          "value": null
+        }
+      },
+      "samsungim.nearbyDetection": {
+        "status": {
+          "value": null
+        }
+      },
+      "samsungim.findNode": {
+        "disabledReason": {
+          "value": null
+        },
+        "enabled": {
+          "value": null
+        }
+      }
+    }
+  }
+}
