@@ -1,0 +1,12 @@
+deviceId
+문열림 센서: 53a3fbea-c4e1-4cfe-9dda-cafa20ab072b
+스테이션: ae0f438f-3ccb-48bf-bb19-2d0c472b9032
+재실 센서: 36401b18-d0d2-4620-85af-108609cc68dd
+스마트 플러그: c39948a8-b131-4d71-aa0d-a3f61bbf2e44
+스테이션 wireless-charge: 45592d89-984b-4e7f-976d-f9b39100bcec
+
+token: 655f67e6-52b0-4929-ab98-023f0684c324
+
+url
+device_list: 'https://api.smartthings.com/v1/devices'
+device_status: 'https://api.smartthings.com/v1/devices/{deviceId}/status'

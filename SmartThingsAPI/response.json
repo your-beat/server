@@ -1,0 +1,51 @@
+{
+  "components": {
+    "main": {
+      "contactSensor": {
+        "contact": {
+          "value": null
+        }
+      },
+      "presenceSensor": {
+        "presence": {
+          "value": "present",
+          "timestamp": "2023-11-16T06:17:08.031Z"
+        }
+      },
+      "refresh": {},
+      "motionSensor": {
+        "motion": {
+          "value": null
+        }
+      },
+      "battery": {
+        "battery": {
+          "value": null
+        }
+      },
+      "firmwareUpdate": {
+        "lastUpdateStatusReason": {
+          "value": null
+        },
+        "availableVersion": {
+          "value": "00000036",
+          "timestamp": "2023-11-16T06:17:52.703Z"
+        },
+        "lastUpdateStatus": {
+          "value": null
+        },
+        "state": {
+          "value": "normalOperation",
+          "timestamp": "2023-11-16T06:17:52.444Z"
+        },
+        "currentVersion": {
+          "value": "00000036",
+          "timestamp": "2023-11-16T06:17:52.949Z"
+        },
+        "lastUpdateTime": {
+          "value": null
+        }
+      }
+    }
+  }
+}
