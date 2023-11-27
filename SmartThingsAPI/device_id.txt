@@ -6,7 +6,3 @@ deviceId
 스테이션 wireless-charge: 45592d89-984b-4e7f-976d-f9b39100bcec
 
 token: 655f67e6-52b0-4929-ab98-023f0684c324
-
-url
-device_list: 'https://api.smartthings.com/v1/devices'
-device_status: 'https://api.smartthings.com/v1/devices/{deviceId}/status'
