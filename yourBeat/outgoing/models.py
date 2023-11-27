@@ -1,11 +1,14 @@
+# outgoing/models.py
 from django.db import models
+from django.contrib.auth.models import User
 
-class frontDoor(models.Model):
-    id=models.AutoField(primary_key=True)
-    status=models.BooleanField(default=False)
+class UserStatus(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    is_away = models.BooleanField(default=False)
+    last_left_time = models.DateTimeField(null=True, blank=True)
+    last_checked_time = models.DateTimeField(null=True, blank=True)  # 사용자 신변 확인을 위한 시간 필드 추가
 
-class frontDoorLog(models.Model):
-    id=models.ForeignKey(frontDoor,on_delete=models.CASCADE)
-    whenOn=models.DateTimeField(auto_now_add=False,auto_now=False,blank=True,null=True)
-
-# 외출 상태를 판단할 센서의 종류를 결정해야할 필요가 있음.
+class Device(models.Model):
+    name = models.CharField(max_length=100)
+    is_on = models.BooleanField(default=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)

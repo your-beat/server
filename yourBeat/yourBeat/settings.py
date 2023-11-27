@@ -39,9 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tv',
     'toilet',
-    'sleep',
     'outgoing',
-    'airCon',
 ]
 
 MIDDLEWARE = [
