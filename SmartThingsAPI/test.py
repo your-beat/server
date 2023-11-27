@@ -28,7 +28,7 @@ get_scenes = 'https://api.smartthings.com/v1/scenes' # Scene 목록
 get_capabilities = 'https://api.smartthings.com/v1/capabilities' # 기능 목록
 
 # OAuth 토큰
-bearer_token = '655f67e6-52b0-4929-ab98-023f0684c324'
+bearer_token = "토큰"
 
 result = get_data_with_bearer_token(get_capabilities, bearer_token)
 
