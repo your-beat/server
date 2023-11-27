@@ -1,28 +1,15 @@
-"""
-URL configuration for yourBeat project.
+# urls.py
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path,include
+from tv import views as tv_views
+from toilet import views as toilet_views
+from outgoing import views as outgoing_views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('tv/',include('tv.urls')),
-    path('toilet/',include('toilet.urls')),
-    path('sleep/',include('sleep.urls')),
-    path('outgoing/',include('outgoing.urls')),
-    path('airCon/',include('airCon.urls')),
+    path('api/tv-status/', tv_views.update_tv_status, name='update_tv_status'),
+    path('api/toilet-usage/', toilet_views.update_toilet_usage, name='update_toilet_usage'),
+    path('api/update-user-status/', outgoing_views.update_user_status, name='update_user_status'),
+    path('api/check-user-safety/', outgoing_views.check_user_safety, name='check_user_safety'),
 ]

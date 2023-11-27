@@ -1,13 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class TV(models.Model):
-    id=models.AutoField(primary_key=True)
-    status=models.BooleanField(default=False)
-    channel=models.IntegerField(default=0)
-    volume=models.IntegerField(default=0)
+class TvWatchingRecord(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    tv_on = models.DateTimeField()
+    tv_off = models.DateTimeField(null=True, blank=True)
+    motion_detected = models.BooleanField(default=False)
 
-class TVLog(models.Model):
-    id=models.ForeignKey(TV,on_delete=models.CASCADE)
-    whenOn=models.DateTimeField(auto_now_add=False,auto_now=False,blank=True,null=True)
-    whenOff=models.DateTimeField(auto_now_add=False,auto_now=False,blank=True,null=True)
-    duration=models.IntegerField(default=0)
+    def __str__(self):
+        return f"{self.user_id}'s TV watching record"

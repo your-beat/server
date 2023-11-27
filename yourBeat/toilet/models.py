@@ -1,15 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class lampSensor(models.Model):
-    id=models.AutoField(primary_key=True)
-    whenOn=models.DateTimeField(auto_now_add=False,auto_now=False,blank=True,null=True)
+class ToiletUsage(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    start_time = models.DateTimeField(auto_now_add=True)
+    end_time = models.DateTimeField(null=True, blank=True)
+    area_times = models.JSONField(default=dict)  # ex: {"toilet": 5, "shower": 10}
+    accident_detected = models.BooleanField(default=False)
 
-
-class motionSensor(models.Model):
-    id=models.AutoField(primary_key=True)
-    whenOn=models.DateTimeField(auto_now_add=False,auto_now=False,blank=True,null=True)
-
-class toiletLog(models.Model):
-    id=models.AutoField(primary_key=True)
-    addedBy=models.CharField(max_length=10,default="Unknown")
-    whenUse=models.DateTimeField(auto_now_add=False,auto_now=False,blank=True,null=True)
+    def __str__(self):
+        return f"{self.user}'s bathroom usage record"
