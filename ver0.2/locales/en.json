@@ -1,0 +1,9 @@
+{
+    "Tap to set": "Tap to set",
+    "pages.mainPage.name": "외출모드",
+    "pages.mainPage.sections.doorSensors.name": "외출모드를 위한 문열림 센서를 선택하세요",
+    "pages.mainPage.settings.doorSensor.name": "문열림 센서 선택",
+    "pages.mainPage.sections.motionSensors.name": "외출모드를 위한 모션 감지 센서를 선택하세요",
+    "pages.mainPage.settings.motionSensor.name": "모션 감지 센서 선택"
+  }
+  
