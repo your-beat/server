@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-ybalu-v!w4h$g(n09pp)zml3c0&=_ikfvab!v3pstw9kry0*h&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['4e29-120-142-129-146.ngrok.io', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'common',
     'tv',
     'toilet',
     'outgoing',

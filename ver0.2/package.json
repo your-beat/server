@@ -1,0 +1,29 @@
+{
+  "name": "yourbeat",
+  "version": "1.0.0",
+  "description": "yourBeat",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "kyeom",
+  "dependencies": {
+    "@smartthings/smartapp": "^4.3.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/hello-express"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "node",
+    "glitch",
+    "express",
+    "smartthings",
+    "smartapp"
+  ]
+}
