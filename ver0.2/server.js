@@ -47,7 +47,7 @@ app.enableEventLogging()  // Log and pretty-print all lifecycle events and respo
     })
     //doorOpenHandler는 현관문이 열렸을 때 10분간의 타이머를 발동시키고, 'presenceState'의 stateStorage를 'not present'로 초기화한 뒤, 10분동안의 재실감지센서의 작동을 presenceActiveHandler를 통해 관찰한다.(presenceActiveHandler는 재실감지센서가 작동하면 'presenceState'의 stateStorage를 'present'로 바꾸어준다.) 10분이 지나면 outgoingHandler를 발동시킨다.
     .subscribedEventHandler('doorOpenHandler', async (context, deviceEvent) => {
-        context.api.schedules.runIn('outgoingHandler',10);
+        context.api.schedules.runIn('outgoingHandler',10); //테스트를 위해 10초로 설정
         const presenceSensorStatus = await context.api.devices.getCapabilityStatus(context.config.presenceSensor[0].deviceConfig.deviceId, 'main', 'presenceSensor');
         if (presenceSensorStatus.presence.value === 'present') {
             stateStorage[context.installationId] = { presenceState: 'present' };
