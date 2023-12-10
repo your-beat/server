@@ -24,6 +24,8 @@ server.post('/', async (req, res) => {
     app.handleHttpCallback(req, res);
 });
 
+
+
 /* Defines the SmartApp */
 app.enableEventLogging()  // Log and pretty-print all lifecycle events and responses
     .configureI18n()      // Use files from locales directory for configuration page localization
@@ -33,6 +35,9 @@ app.enableEventLogging()  // Log and pretty-print all lifecycle events and respo
         });
         page.section('presenceSensors', section => {
             section.deviceSetting('presenceSensor').capabilities(['presenceSensor']).required(true);
+        });
+        page.section('smartPlugs', section => {
+            section.deviceSetting('smartPlug').capabilities(['switch']).required(true);
         });
     })
     .updated(async (context, updateData) => { //앱이 업데이트 되었을때마다 구독을 취소하고 다시 구독을 추가
@@ -54,7 +59,7 @@ app.enableEventLogging()  // Log and pretty-print all lifecycle events and respo
         } else {
             stateStorage[context.installationId] = { presenceState: 'not present' };
         }
-        console.log(`[doorOpenHandler] State updated: ${JSON.stringify(stateStorage[context.installationId])}`);
+        console.log(`####################################################[doorOpenHandler] State updated: ${JSON.stringify(stateStorage[context.installationId])}`);
     })
     //presenceActiveHandler는 재실 감지 센서의 presence.present의 값이 바뀌면 발동되며, presence.present의 값이 'present'라면 재실 감지 센서의 stateStorage를 'present'로 바꾼다.
     .subscribedEventHandler('presenceActiveHandler', (context, deviceEvent) => {
@@ -65,25 +70,25 @@ app.enableEventLogging()  // Log and pretty-print all lifecycle events and respo
     })
 
     //outgoingHandler는 현관문이 열린 지 10분이 지나면 발동되며, 재실 감지 센서의 stateStorage가 'present'라면 사용자의 smartthings와 연결된 모든 디바이스의 전원을 off한다. stateStorage가 'not present' 라면 아무것도 하지 않는다.
-    .subscribedEventHandler('outgoingHandler', async (context, deviceEvent) => {
+    app.scheduledEventHandler('outgoingHandler', async (context, deviceEvent) => {
+        // 타이머 이벤트에 대한 처리 로직
         // 현관문이 열린 지 10분 후 실행되는 핸들러입니다.
         const presenceState = stateStorage[context.installationId].presenceState;
-        console.log(`[outgoingHandler] Checking state: ${JSON.stringify(stateStorage[context.installationId])}`);
+        console.log(`##########################################[outgoingHandler] Checking state: ${JSON.stringify(stateStorage[context.installationId])}`);
         if (presenceState === 'present') {
             // 연결된 모든 디바이스의 목록을 가져옵니다.
             const devices = await context.api.devices.list();
-            // 각 디바이스에 대해 'off' 커맨드를 보냅니다.
             for (const device of devices) {
-                if (device.components.main.capabilities.switch) {
-                    // 디바이스가 스위치 기능을 지원하는 경우에만 커맨드를 보냅니다.
-                    await context.api.devices.sendCommands(device.deviceId, 'switch', 'off');
+                if (device.label === 'Aqara Smart Plug 1'){
+                    try {
+                        await context.api.devices.sendCommands([device.deviceId], 'switch', 'off');
+                        console.log('명령 전송 성공');
+                    } catch (error) {
+                        console.error('명령 전송 실패:', error);
+                    }
                 }
             }
         }
-    });
-
-    app.scheduledEventHandler('outgoingHandler', async (context, event) => {
-        // 타이머 이벤트에 대한 처리 로직
     });
 
 /* Starts the server */

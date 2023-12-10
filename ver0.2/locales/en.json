@@ -4,6 +4,8 @@
     "pages.mainPage.sections.doorSensors.name": "Select door sensors to trigger the Away mode",
     "pages.mainPage.settings.doorSensor.name": "Door sensors",
     "pages.mainPage.sections.presenceSensors.name": "Select presence sensors to trigger the Away mode",
-    "pages.mainPage.settings.presenceSensor.name": "Presence sensors"
+    "pages.mainPage.settings.presenceSensor.name": "Presence sensors",
+    "pages.mainPage.sections.smartPlugs.name": "Select smart plugs to turn off when the Away mode is triggered",
+    "pages.mainPage.settings.smartPlug.name": "Smart plugs"
   }
   
