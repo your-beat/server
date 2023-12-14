@@ -82,6 +82,7 @@ server.post('/fcm', async(req,res)=>{
 
 // 외출 모드 활성화 시 푸시 알림 전송
 async function sendPushNotificationForAwayMode(userId) {
+    currentTime= new Date();
     query = 'SELECT fcmToken FROM fcm WHERE userId = ?';
     connection.query(query,[userId], (error, results, fields) => {
         if (error) throw error;
@@ -89,8 +90,10 @@ async function sendPushNotificationForAwayMode(userId) {
     });
     const message = {
         notification: {
+            type: 0, // 0: 일반 알림, 1: 이상감지 알림
             title: '외출 모드 활성화',
-            body: '외출 모드가 활성화되었습니다.'
+            body: '외출 모드가 활성화되었습니다.',
+            time: currentTime.toLocaleTimeString()
         },
         token: fcmToken // 사용자의 FCM 토큰
     };
@@ -113,8 +116,10 @@ async function sendPushNotificationForToiletAlertLongUsing(userId) {
     });
     const message = {
         notification: {
+            type: 1, // 0: 일반 알림, 1: 이상감지 알림
             title: '화장실 이상 감지',
-            body: '화장실을 너무 오래 사용하는 이상 감지가 발생했습니다.'
+            body: '화장실을 너무 오래 사용하는 이상 감지가 발생했습니다.',
+            time: currentTime.toLocaleTimeString()
         },
         token: fcmToken // 사용자의 FCM 토큰
     };
@@ -135,8 +140,10 @@ async function sendPushNotificationForToiletAlertLongUnusing(userId) {
     });
     const message = {
         notification: {
+            type: 1, // 0: 일반 알림, 1: 이상감지 알림
             title: '화장실 이상 감지',
-            body: '화장실을 너무 오래 사용하지 않는 이상 감지가 발생했습니다.'
+            body: '화장실을 너무 오래 사용하지 않는 이상 감지가 발생했습니다.',
+            time: currentTime.toLocaleTimeString()
         },
         token: fcmToken // 사용자의 FCM 토큰
     };
