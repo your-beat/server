@@ -83,7 +83,7 @@ server.post('/fcm', async(req,res)=>{
 // 외출 모드 활성화 시 푸시 알림 전송
 async function sendPushNotificationForAwayMode(userId) {
     currentTime= new Date();
-    query = 'SELECT fcmToken FROM fcm WHERE userId = ?';
+    query = 'SELECT fcmToken FROM fcm WHERE installationId = ?';
     connection.query(query,[userId], (error, results, fields) => {
         if (error) throw error;
         fcmToken = results[0].fcmToken;
@@ -109,7 +109,7 @@ async function sendPushNotificationForAwayMode(userId) {
 
 // 화장실 이상 감지 시 푸시 알림 전송
 async function sendPushNotificationForToiletAlertLongUsing(userId) {
-    query = 'SELECT fcmToken FROM fcm WHERE userId = ?';
+    query = 'SELECT fcmToken FROM fcm WHERE installationId = ?';
     connection.query(query,[userId], (error, results, fields) => {
         if (error) throw error;
         fcmToken = results[0].fcmToken;
@@ -133,7 +133,7 @@ async function sendPushNotificationForToiletAlertLongUsing(userId) {
         });
 }
 async function sendPushNotificationForToiletAlertLongUnusing(userId) {
-    query = 'SELECT fcmToken FROM fcm WHERE userId = ?';
+    query = 'SELECT fcmToken FROM fcm WHERE installationId = ?';
     connection.query(query,[userId], (error, results, fields) => {
         if (error) throw error;
         fcmToken = results[0].fcmToken;
