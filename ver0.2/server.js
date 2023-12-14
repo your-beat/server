@@ -1,5 +1,6 @@
 //server.js
 
+//--------------------------------------------------------모듈--------------------------------------------------------//
 'use strict';
 require('dotenv').config();
 const express = require('express');
@@ -8,8 +9,9 @@ const SmartApp = require('@smartthings/smartapp');
 const server = module.exports = express();
 server.use(bodyParser.json());
 const app = new SmartApp()
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const admin = require('firebase-admin');
+
 
 //--------------------------------------------------------전역변수--------------------------------------------------------//
 const stateStorage = {}; //재실 감지 센서의 상태를 저장하는 변수. 'present': 재실 중. 'not present': 재실 중 x
@@ -82,12 +84,10 @@ server.post('/fcm', async(req,res)=>{
 
 // 외출 모드 활성화 시 푸시 알림 전송
 async function sendPushNotificationForAwayMode(userId) {
-    currentTime= new Date();
+    let currentTime= new Date();
     query = 'SELECT fcmToken FROM fcm WHERE installationId = ?';
-    connection.query(query,[userId], (error, results, fields) => {
-        if (error) throw error;
-        fcmToken = results[0].fcmToken;
-    });
+    const [results] = await connection.promise().query(query, [userId]);
+    let fcmToken = results[0].fcmToken;
     const message = {
         notification: {
             type: 0, // 0: 일반 알림, 1: 이상감지 알림
@@ -109,11 +109,10 @@ async function sendPushNotificationForAwayMode(userId) {
 
 // 화장실 이상 감지 시 푸시 알림 전송
 async function sendPushNotificationForToiletAlertLongUsing(userId) {
+    let currentTime= new Date(); 
     query = 'SELECT fcmToken FROM fcm WHERE installationId = ?';
-    connection.query(query,[userId], (error, results, fields) => {
-        if (error) throw error;
-        fcmToken = results[0].fcmToken;
-    });
+    const [results] = await connection.promise().query(query, [userId]);
+    let fcmToken = results[0].fcmToken;
     const message = {
         notification: {
             type: 1, // 0: 일반 알림, 1: 이상감지 알림
@@ -133,11 +132,10 @@ async function sendPushNotificationForToiletAlertLongUsing(userId) {
         });
 }
 async function sendPushNotificationForToiletAlertLongUnusing(userId) {
+    let currentTime= new Date();
     query = 'SELECT fcmToken FROM fcm WHERE installationId = ?';
-    connection.query(query,[userId], (error, results, fields) => {
-        if (error) throw error;
-        fcmToken = results[0].fcmToken;
-    });
+    const [results] = await connection.promise().query(query, [userId]);
+    let fcmToken = results[0].fcmToken;
     const message = {
         notification: {
             type: 1, // 0: 일반 알림, 1: 이상감지 알림
