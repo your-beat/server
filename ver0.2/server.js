@@ -82,6 +82,44 @@ server.post('/fcm', async(req,res)=>{
     }
 })
 
+// 외출모드 활성화 및 이상감지 로그 확인 API
+server.get('/logs', async (req, res) => {
+    try {
+        query='SELECT * FROM userLog';
+        connection.query(query, (error, results, fields) => {
+        if (error) throw error;
+        console.log('Logs:', results);
+        res.json(results);
+        }
+        );
+    } catch (error) {
+        console.error('로그 조회 실패:', error);
+        res.status(500).send('Internal Server Error');
+    }
+})
+// 예시!!!!!!!!!!!!!!!!!!
+// {
+//     "logs": [
+//       {
+//         "id": 1,
+//         "type": 0,
+//         "title": "외출 모드",
+//         "body": "외출 모드가 활성화되었습니다.",
+//         "time": "2023. 12. 15. 오전 12:22:14"
+//       },
+//       {
+//         "id": 2,
+//         "type": 1,
+//         "title": "화장실",
+//         "body": "화장실을 너무 오래 사용하는 이상 감지가 발생했습니다.",
+//         "time": "2023. 12. 15. 오전 12:22:14"
+//       }
+//       ...
+//     ]
+//   }
+
+
+
 // 외출 모드 활성화 시 푸시 알림 전송
 async function sendPushNotificationForAwayMode(userId) {
     let currentTime= new Date();
@@ -97,6 +135,11 @@ async function sendPushNotificationForAwayMode(userId) {
         },
         token: fcmToken // 사용자의 FCM 토큰
     };
+    query='INSERT INTO userLog (type,title,body,time) VALUES (?,?,?,?)';
+    connection.query(query, [0,'외출 모드','외출 모드가 활성화되었습니다.',currentTime.toLocaleString()], (error, results, fields) => {
+        if (error) throw error;
+        console.log('Inserted data with ID:', results.insertId);
+    });
 
     await admin.messaging().send(message)
         .then((response) => {
@@ -116,12 +159,18 @@ async function sendPushNotificationForToiletAlertLongUsing(userId) {
     const message = {
         notification: {
             type: 1, // 0: 일반 알림, 1: 이상감지 알림
-            title: '화장실 이상 감지',
+            title: '화장실',
             body: '화장실을 너무 오래 사용하는 이상 감지가 발생했습니다.',
             time: currentTime.toLocaleTimeString()
         },
         token: fcmToken // 사용자의 FCM 토큰
     };
+    query='INSERT INTO userLog (type,title,body,time) VALUES (?,?,?,?)';
+    connection.query(query, [1,'화장실','화장실을 너무 오래 사용하는 이상 감지가 발생했습니다.',currentTime.toLocaleString()], (error, results, fields) => {
+        if (error) throw error;
+        console.log('Inserted data with ID:', results.insertId);
+    }
+    );
 
     await admin.messaging().send(message)
         .then((response) => {
@@ -139,12 +188,18 @@ async function sendPushNotificationForToiletAlertLongUnusing(userId) {
     const message = {
         notification: {
             type: 1, // 0: 일반 알림, 1: 이상감지 알림
-            title: '화장실 이상 감지',
+            title: '화장실',
             body: '화장실을 너무 오래 사용하지 않는 이상 감지가 발생했습니다.',
             time: currentTime.toLocaleTimeString()
         },
         token: fcmToken // 사용자의 FCM 토큰
     };
+    query='INSERT INTO userLog (type,title,body,time) VALUES (?,?,?,?)';
+    connection.query(query, [1,'화장실','화장실을 너무 오래 사용하지 않는 이상 감지가 발생했습니다.',currentTime.toLocaleString()], (error, results, fields) => {
+        if (error) throw error;
+        console.log('Inserted data with ID:', results.insertId);
+    }
+    );
 
     await admin.messaging().send(message)
         .then((response) => {
